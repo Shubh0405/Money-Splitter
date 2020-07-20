@@ -8,8 +8,11 @@
 <div class="container">
   <div class="final-debt-info">
     <div class="final-debt-income">
-      <h1>Incomes:</h1>
+      <h1>Renumeration:</h1>
       <div class="row">
+        {% if noincome %}
+          <h4>Oops! Looks like no remuneration is pending.</h4>
+        {% else %}
         {% for obj in user_receiver_positive %}
           <div class="col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="incomes-debts-info">
@@ -28,11 +31,15 @@
             </div>
           </div>
         {% endfor %}
+        {% endif %}
       </div>
     </div>
     <div class="final-debt-expense">
-      <h1>Expense:</h1>
+      <h1>Debts:</h1>
       <div class="row">
+        {% if noexpense %}
+        <h4>Hurray! No debts pending.</h4>
+        {% else %}
         {% for obj in user_sender_positive %}
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
           <div class="expense-debts-info">
@@ -51,36 +58,11 @@
           </div>
         </div>
         {% endfor %}
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
-
-<!-- <div class="container">
-  <div class="jumbotron">
-    <h1>Incomes:</h1>
-    {% for obj in user_receiver_positive %}
-    <p>Receive from: {{ obj.sender.username }}</p>
-    <p>Amount: {{ obj.final_amount }}</p>
-    <br>
-    {% endfor %}
-    {% for obj in user_sender_negative %}
-    <p>Receive from: {{ obj.receiver.username }}</p>
-    <p>Amount: {{ obj.final_amount }}</p>
-    <br>
-    {% endfor %}
-    <br>
-    <h1>Expense:</h1>
-    {% for obj in user_sender_positive %}
-    <p>Pay to: {{ obj.receiver.username }}</p>
-    <p>Amount: {{ obj.final_amount }}</p>
-    {% endfor %}
-    {% for obj in user_receiver_negative %}
-    <p>Pay to: {{ obj.sender.username }}</p>
-    <p>Amount: {{ obj.final_amount }}</p>
-    {% endfor %}
-  </div>
-</div> -->
 
 
 
