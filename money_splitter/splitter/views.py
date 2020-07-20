@@ -287,6 +287,8 @@ def final_settlements(request):
     user_sender_negative = []
     user_receiver_positive = []
     user_receiver_negative = []
+    noincome = False
+    noexpense = False
     for obj in user_sender:
         if(obj.final_amount > 0):
             user_sender_positive.append(obj)
@@ -299,10 +301,16 @@ def final_settlements(request):
         if(obj.final_amount < 0):
             obj.final_amount = abs(obj.final_amount)
             user_receiver_negative.append(obj)
+    if len(user_receiver_positive) == 0 and len(user_sender_negative) == 0:
+        noincome = True
+    if len(user_sender_positive) == 0 and len(user_receiver_negative) == 0:
+        noexpense = True
     return render(request,'splitter/final_settlements.html',{'user_sender_positive':user_sender_positive,
                                                                 'user_sender_negative':user_sender_negative,
                                                                 'user_receiver_positive':user_receiver_positive,
-                                                                'user_receiver_negative':user_receiver_negative})
+                                                                'user_receiver_negative':user_receiver_negative,
+                                                                'noincome':noincome,
+                                                                'noexpense':noexpense})
 
 
 ## delete debt view
