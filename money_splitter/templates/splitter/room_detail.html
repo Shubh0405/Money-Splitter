@@ -1,0 +1,85 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/room_detail.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="room-detail-page">
+  <div class="row room-detail">
+    <div class="col-sm-6">
+      <div class="room-detail-img-grid">
+        <img src="{% static 'images/undraw_group_selfie_ijc6.svg' %}" alt="" class="room-detail-img">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="container room-detail-info">
+        <h1>{{ rooms.name }}</h1>
+        <h4>Created by: {{ rooms.creater.username }}</h4>
+        <p><b>{{ members_count }} members</b></p>
+        <a class="btn btn-primary" href="" data-target="#ModalCreateTransaction" data-toggle="modal">Add transactions</a>
+        {% if creator %}
+        <a href="{% url 'splitter:list_members' pk=rooms.pk %}" class="btn btn-primary">Add Members</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="room-transactions-info">
+    <h1>Transaction:</h1>
+    <div class="row">
+      {% for transaction in transactions %}
+      <div class="col-lg-3 col-md-4 col-12">
+        <div class="transaction-detail-box">
+          <div class="transaction-detail-box-info">
+          <h3>{{ transaction.reason }}</h3>
+          <p>{{ transaction.amount }}</p>
+          <p>Paid by {{ transaction.payer.username }}</p>
+          <p>{{ transaction.created_at }}</p>
+          </div>
+          <a href="{% url 'splitter:transaction_details' pk=transaction.pk %}">
+          <div class="transaction-detail-button">
+            View Details
+          </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="ModalCreateTransaction" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="{% url 'splitter:create_transaction' pk=rooms.pk %}" method="post">
+            {% csrf_token %}
+            <label for="reason"><i class="fal fa-money-check-edit-alt"></i> Reason:</label>
+            <input type="text" name="reason" placeholder='reason'>
+            <hr>
+            <label for="amount"><i class="fas fa-money-check-alt"></i> Amount:</label>
+            <input type="number" name="amount" placeholder='Amount'><br>
+            <hr>
+            <p><i class="far fa-users"></i> Select Splitters:</p>
+            {% for member in members_list %}
+            <input type="checkbox" name="splitter" value='{{ member.username }}'>{{ member.username }}<br>
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-primary" name="" value="Submit">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

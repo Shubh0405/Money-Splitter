@@ -1,0 +1,87 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/final_settlements.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="final-debt-info">
+    <div class="final-debt-income">
+      <h1>Incomes:</h1>
+      <div class="row">
+        {% for obj in user_receiver_positive %}
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="incomes-debts-info">
+              <h3>Receive from:</h3>
+              <h3>{{ obj.sender.username }}</h3>
+              <h4>Amount: {{ obj.final_amount }}</h4>
+            </div>
+          </div>
+        {% endfor %}
+        {% for obj in user_sender_negative %}
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="incomes-debts-info">
+              <h3>Receive from:</h3>
+              <h3>{{ obj.receiver.username }}</h3>
+              <h4>Amount: {{ obj.final_amount }}</h4>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="final-debt-expense">
+      <h1>Expense:</h1>
+      <div class="row">
+        {% for obj in user_sender_positive %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="expense-debts-info">
+            <h2>Pay to:</h2>
+            <h3>{{ obj.receiver.username }}</h3>
+            <h4>Amount: {{ obj.final_amount }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+        {% for obj in user_receiver_negative %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="expense-debts-info">
+            <h2>Pay to:</h2>
+            <h3>{{ obj.sender.username }}</h3>
+            <h4>Amount: {{ obj.final_amount }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="jumbotron">
+    <h1>Incomes:</h1>
+    {% for obj in user_receiver_positive %}
+    <p>Receive from: {{ obj.sender.username }}</p>
+    <p>Amount: {{ obj.final_amount }}</p>
+    <br>
+    {% endfor %}
+    {% for obj in user_sender_negative %}
+    <p>Receive from: {{ obj.receiver.username }}</p>
+    <p>Amount: {{ obj.final_amount }}</p>
+    <br>
+    {% endfor %}
+    <br>
+    <h1>Expense:</h1>
+    {% for obj in user_sender_positive %}
+    <p>Pay to: {{ obj.receiver.username }}</p>
+    <p>Amount: {{ obj.final_amount }}</p>
+    {% endfor %}
+    {% for obj in user_receiver_negative %}
+    <p>Pay to: {{ obj.sender.username }}</p>
+    <p>Amount: {{ obj.final_amount }}</p>
+    {% endfor %}
+  </div>
+</div> -->
+
+
+
+{% endblock %}

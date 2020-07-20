@@ -1,0 +1,66 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+.final-debt-info{
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.final-debt-info .final-debt-income{
+  text-align: center;
+  margin: 30px 0px;
+  justify-content: center;
+}
+
+.final-debt-info .final-debt-expense{
+  text-align: center;
+  margin: 30px 0px;
+  justify-content: center;
+}
+
+.final-debt-info .final-debt-income .row{
+  width: 100%;
+}
+
+.final-debt-info .final-debt-expense .row{
+  width: 100%;
+}
+
+.incomes-debts-info{
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0,.05);
+  background-image: linear-gradient(to top, #9be15d 0%, #00e3ae 100%);
+  border-radius: .8rem;
+  text-align: center;
+}
+
+.expense-debts-info{
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0,.05);
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  border-radius: .8rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 750px){
+  .final-debt-info .final-debt-income .incomes-debts-info h3{
+    font-size: 15px;
+  }
+  .final-debt-info .final-debt-income .incomes-debts-info h4{
+    font-size: 15px;
+  }
+  .final-debt-info .final-debt-expense .expense-debts-info h3{
+    font-size: 15px;
+  }
+}

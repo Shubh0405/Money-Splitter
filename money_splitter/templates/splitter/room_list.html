@@ -1,0 +1,58 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/room_list.css' %}">
+{% endblock %}
+{% block content %}
+
+
+  <div class="room-list-page">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="room-list-img-grid">
+        <img src="{% static 'images/undraw_Group_chat_unwm.svg' %}" alt="" class="room_list_img" >
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="container room-list-grid">
+          {% if length %}
+          <h1>No Rooms Created!!</h1>
+          {% else %}
+          <h1>Your Rooms:</h1>
+          {% for room in rooms_list %}
+          <a href="{% url 'splitter:room_detail' pk=room.pk %}">
+            <div class="room_name">
+              <p>{{ room.name }}</p>
+            </div>
+          </a>
+          {% endfor %}
+          {% endif %}
+          <a href="" class="btn btn-primary create-room" data-target="#RoomModalCreateTransaction" data-toggle="modal">Create Room</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="RoomModalCreateTransaction" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create Room</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'splitter:add_room' %}" method="post">
+              {% csrf_token %}
+              <input type="text" name="room_name" placeholder="Enter your room name">
+              <br>
+              <br>
+              <input type="submit" class="btn btn-primary" name="" value="Create Room">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

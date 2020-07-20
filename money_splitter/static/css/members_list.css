@@ -1,0 +1,57 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+.add-member-page .row{
+  width: 100%;
+}
+
+.add-member-img-grid{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.add-member-img{
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  padding: 30px;
+  margin-top: 75px;
+  padding-left: 0px;
+}
+
+.add-member-grid{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  margin: 20px 0px;
+}
+
+.add-member-grid h2{
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.add-member-grid .member-box{
+  display: inline-table;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.add-member-grid .member-box .add-button{
+  float: right;
+  margin-right: 0px;
+}
+
+@media only screen and (max-width: 990px){
+  .add-member-img-grid{
+    display: none;
+  }
+}

@@ -1,0 +1,104 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block content %}
+
+   <div class="banner" data-aos="zoom-out" data-aos-delay="100" data-aos-duration="2500">
+      <img class="banner_background" src="{% static 'images/002.jpg' %}" alt="">
+      <div class="content">
+        <h1>Money Splitter</h1>
+        <p>Easy Splitting of group expenses.</p>
+      </div>
+    </div>
+
+    <div class="cards_section">
+      <div class="row">
+        <div class="col-md-12 col-lg-4">
+          <div class="view view-first" data-aos="fade-left" data-aos-delay="100" data-aos-duration="2500">
+            <img src="{% static 'images/card1.PNG' %}" />
+            <div class="mask">
+              <h2>Personal Budget</h2>
+              <p>Our website provides a user friendly personal budget management system where user can easily keep track of his Incomes and Expenditures with easy add and delete budget and display the overall details of his Total Income and Expenditure in an interactive user interface.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <div class="view view-first" data-aos="fade-up" data-aos-delay="200" data-aos-duration="2500">
+            <img src="{% static 'images/card3.PNG' %}" />
+            <div class="mask">
+              <h2>Groups</h2>
+              <p>Going out to parties/trips with friend is fun but managing your expense, who owes you, can be a confusing task. Our website solves it all just create a group and add your friends in it, every transaction done in the group reflects in every member's profile making it easy for everyone to keep track of their debts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <div class="view view-first" data-aos="fade-right" data-aos-delay="300" data-aos-duration="2500">
+            <img src="{% static 'images/card2.PNG' %}" />
+            <div class="mask">
+              <h2>Debt Settlements</h2>
+              <p>Let's say you have a friend who is with you in several groups, now in some of the groups you owe him certain amount and in others he owes you, now keeping track of each and every one of them can be confusing Our website solves it in one click, it fetches all your tranaction details with a member from every group and shows the final settlement amount.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax pic">
+      <div class="heading">
+        Keep track of all your expenses and debts using money splitter.
+      </div>
+    </div>
+
+    <div class="explain">
+      <h2>How To Use</h2>
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="100" data-aos-duration="2500">
+        <div class="blog_img_left">
+          <img src="{% static 'images/undraw_secure_login_pdn4.svg' %}" alt="">
+        </div>
+        <div class="blog_info">
+          <h1>Register for Free</h1>
+          <p>Wondering the Charges of the exclusive features we provide!!!!! Its Absolutely FREE just signup like you do on any other website by proving your nickname, an email to contact you on, and a strong password just to keep ur details safe. To make it more friendly we also have login with google feature for you. Enjoy our Services!!!</p>
+        </div>
+      </div>
+      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="300" data-aos-duration="2500">
+        <div class="blog_info right_info">
+          <h1>Manage Your Personal Budget</h1>
+          <p>Navigate to our Personal Budget tab, Here you can easily add or delete your expenses and incomes and view your net worth in detail with total income and total expense. A great easy way to keep track of all your earnings in one place. Just selete + to add income and - to add expense, add the description as per your convenience and enter the amount thats all.</p>
+        </div>
+        <div class="blog_img_right">
+          <img src="{% static 'images/undraw_Calculator_0evy.svg' %}" alt="">
+        </div>
+      </div>
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="600" data-aos-duration="2500">
+        <div class="blog_img_left">
+          <img src="{% static 'images/undraw_hang_out_h9ud.svg' %}" alt="">
+        </div>
+        <div class="blog_info">
+          <h1>Create Groups And Add Friends.</h1>
+          <p>Going out to parties/trips with friends go to your rooms tab, create a room and add your friends in it, in case you dont see your friends name in the list just ask him to register on our website. Now each of you can enter a transaction and just to make it realistic user can choose with whom they want to split the amount.</p>
+        </div>
+      </div>
+      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="900" data-aos-duration="2500">
+        <div class="blog_info right_info">
+          <h1>Add or Update transaction.</h1>
+          <p>Add a transaction by entering amount, description and choose the members with whom you want to split the amount as you are the creator of the transaction you can update it anytime you want. Our website automatically records the date and time of the transaction and displays it in transaction detail page with every other detail in it.</p>
+        </div>
+        <div class="blog_img_right">
+          <img src="{% static 'images/undraw_online_payments_luau.svg' %}" alt="">
+        </div>
+      </div>
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="1200" data-aos-duration="2500">
+        <div class="blog_img_left">
+          <img src="{% static 'images/undraw_checking_boxes_2ibd.svg' %}" alt="">
+        </div>
+        <div class="blog_info">
+          <h1>Check Your Debts And Settle them.</h1>
+          <p>Owe your friend some money !!, go to my debts tab and check who owes and whom you have to pay. The amounts you recieve only you can settle them as a conformation so that the person who owes can't settle the amount himself without paying.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      AOS.init();
+    </script>
+
+{% endblock %}

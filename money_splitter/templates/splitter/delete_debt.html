@@ -1,0 +1,15 @@
+{% extends 'splitter/base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h4>Are you sure you want to settle the debt?</h4>
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" value="Yes" class="btn btn-primary" >
+      <a href="{% url 'splitter:my_debts' %}" class="btn btn-danger">Cancel</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

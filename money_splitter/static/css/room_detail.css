@@ -1,0 +1,85 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+body,html{
+  margin:0;
+  padding: 0;
+}
+
+.room-detail-page .row{
+  width: 100%;
+}
+
+.room-detail-page .room-detail{
+  background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+  width: 100%;
+  margin: 0;
+  padding: 30px;
+}
+
+.room-detail-img{
+  width: 120%;
+  height: 50vh;
+  padding: 30px;
+}
+
+.room-detail-info{
+  text-align: left;
+  margin-top: 50px;
+}
+
+.room-detail-info h1,h4{
+  font-size: 60px;
+}
+
+.room-transactions-info{
+  margin-top: 30px;
+  padding-bottom: 60px;
+}
+
+.room-transactions-info .row{
+  width: 100%;
+}
+
+.room-transactions-info .transaction-detail-box{
+  margin-top: 30px;
+  padding-top: 20px;
+  box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0,.05);
+  background: linear-gradient(to right, rgba(79, 172,254, .8), rgba(0, 242, 254, .8));
+  border-radius: .8rem;
+  text-align: center;
+}
+
+.room-transactions-info .transaction-detail-box .transaction-detail-box-info{
+  margin-bottom: 10px;
+}
+
+.room-transactions-info .transaction-detail-box .transaction-detail-button{
+  width: 100%;
+  background-image: linear-gradient(to top, #b224ef 0%, #7579ff 100%);
+  text-align: center;
+  padding: 10px 0px;
+  color: white;
+  text-decoration: none;
+  border-radius: .8rem;
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+.room-transactions-info .transaction-detail-box:hover .transaction-detail-button{
+  opacity: 1;
+}
+
+@media only screen and (max-width: 576px){
+  .room-detail-img-grid{
+    display: none;
+  }
+  .room-detail-info h1,h4{
+    font-size: 50px;
+  }
+  .room-detail-info{
+    text-align: center;
+  }
+}

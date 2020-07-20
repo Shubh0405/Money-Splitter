@@ -1,0 +1,122 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/personal_budget.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<div class="budget-top">
+  <img class="budget-top-background" src="{% static 'images/personal_budget_background.PNG' %}">
+  <div class="show-budget">
+    <h1>Final Budget</h1>
+    <h2>{{ total_bud }}</h2>
+    <div class="income-box">
+      <p>Total Income</p>
+      <p>{{ total_income }}</p>
+    </div>
+    <div class="expense-box">
+      <p>Total Expense</p>
+      <p>{{ total_expenses }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="budget-form">
+  <form action="{% url 'splitter:add_personal_budget' %}" method="post">
+    {% csrf_token %}
+    <select id="type" name="type" class="form-inputs">
+        <option value="inc">+</option>
+        <option value="exp">-</option>
+    </select>
+    <input type="text" name="description" placeholder="Description" class="form-inputs">
+    <input type="text" name="amount" placeholder="Amount" class="form-inputs">
+    <input type="submit" class="form-inputs btn btn-primary">
+  </form>
+</div>
+
+
+<div class="budget-bottom">
+  <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h2>Income</h2>
+        <div class="budget-info-list income">
+          {% for income in incomes %}
+          <div class="item clearfix">
+            <div class="item__description">{{ income.description }}</div>
+              <div class="right clearfix">
+                  <div class="item__value">{{ income.amount }}</div>
+                  <a href="" data-target="#id_{{ income.pk }}" data-toggle="modal">
+                  <div class="item__delete">
+                      <button class="item__delete--btn"><i class="fal fa-times-circle"></i></button>
+                  </div>
+                  </a>
+              </div>
+
+         <div class="modal fade" tabindex="-1" role="dialog" id="id_{{ income.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">Delete {{ income.description }} Income</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                 <form action="{% url 'splitter:delete_personal_income' pk=income.pk %}" method="post">
+                   {% csrf_token %}
+                   <input type="submit" value="Yes" class="btn btn-primary">
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+         </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <h2>Expense</h2>
+        <div class="budget-info-list expenses">
+          {% for expense in expenses %}
+          <div class="item clearfix">
+            <div class="item__description">{{ expense.description }}</div>
+              <div class="right clearfix">
+                  <div class="item__value">{{ expense.amount }}</div>
+                  <a href="" data-target="#id_{{ expense.pk }}" data-toggle="modal">
+                  <div class="item__delete">
+                      <button class="item__delete--btn"><i class="fal fa-times-circle"></i></button>
+                  </div>
+                  </a>
+              </div>
+
+         <div class="modal fade" tabindex="-1" role="dialog" id="id_{{ expense.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">Delete {{ expense.description }} Expense</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                 <form action="{% url 'splitter:delete_personal_expense' pk=expense.pk %}" method="post">
+                   {% csrf_token %}
+                   <input type="submit" value="Yes" class="btn btn-primary">
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

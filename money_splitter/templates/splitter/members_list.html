@@ -1,0 +1,37 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/mysearchbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/members_list.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="add-member-page">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="add-member-img-grid">
+        <img src="{% static 'images/undraw_team_ih79.svg' %}" alt="" class="add-member-img">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="container add-member-grid">
+        <h2>Add Member:</h2>
+        <form method='GET' action="{% url 'splitter:list_members' pk=rooms.pk %}">
+          <p>Search User: <input type='search' name='q' placeholder='Search'></p>
+        </form>
+        {% for obj in members_list %}
+        <div class="member-box">
+        <h5><b>{{ obj.username }}</b>
+        <div class="add-button">
+          <a href="{% url 'splitter:add_member' pk=rooms.pk id=obj.id %}" class="btn btn-primary">Add</a>
+        </div>
+        </h5>
+        </div>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

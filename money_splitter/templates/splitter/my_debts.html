@@ -1,0 +1,81 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/mysearchbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/my_debts.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="my-debts-info">
+    <form method='GET' action="{% url 'splitter:my_debts' %}">
+      <p>Search User: <input type='search' name='q' placeholder='Search'></p>
+    </form>
+    <div class="my-debts-income">
+      <h1>Payments to receive:</h1>
+      <div class="row">
+         {% if incomes.count == 0 %}
+         <h4>No payments to receive!!!</h4>
+         {% else %}
+        {% for income in incomes %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="my-debts-income-info">
+            <h4>{{ income.amount }}</h4>
+            <p>From {{ income.sender.username }}</p>
+            <p>For {{ income.transaction.reason }}</p>
+            <p>Room {{ income.room.name }}</p>
+            <p>{{ income.transaction.created_at }}</p>
+            <a href="{% url 'splitter:delete_debt' pk=income.pk %}" data-target="#{{ income.sender.username }}_{{ income.pk }}" data-toggle="modal">
+              <div class="settle-debt-button">
+                Settle Debt
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="{{ income.sender.username }}_{{ income.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Settle Debt of {{ income.sender.username }} for {{ income.transaction.reason }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{% url 'splitter:delete_debt' pk=income.pk %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit" value="Yes" class="btn btn-primary">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="my-debts-expense">
+      <h1>Amounts to pay:</h1>
+      <div class="row">
+        {% if expenses.count == 0 %}
+        <h4>No amounts to pay!!!</h4>
+        {% else %}
+        {% for expense in expenses %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="my-debts-expense-info">
+            <h4>{{ expense.amount }}</h4>
+            <p>Give to {{ expense.receiver.username }}</p>
+            <p>For {{ expense.transaction.reason }}</p>
+            <p>Room {{ expense.room.name }}</p>
+            <p>{{ expense.transaction.created_at }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <a href="{% url 'splitter:final_settlements' %}" class="btn btn-primary final-debts-button">Show Final Debts</a>
+  </div>
+  </div>
+
+{% endblock %}

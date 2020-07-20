@@ -1,0 +1,481 @@
+@import url(https://fonts.googleapis.com/css2?family=Merienda+One&display=swap);
+
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Merienda One', cursive;
+}
+
+body,html{
+  overflow-x: hidden;
+}
+
+:root{
+  var(--IndianRed): #db575b;
+  var(--Aqua): #99ffe4;
+  var(--MiddleBlue): #88cfd3;
+  var(--SteelBlue): #578bb2;
+  var(--BdazzledBlue): #345c98;
+  var(--DarkButton): linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  var(--LightButton): linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  var(--RedButton): linear-gradient(45deg, #874da2 0%, #c43a30 100%);
+}
+
+nav{
+  background: white;
+  position: sticky;
+  height: 80px;
+  width: 100%;
+  color: white;
+  top: 0;
+  z-index: 100;
+  margin: 0px;
+}
+
+label.logo{
+  vertical-align: top;
+  font-size: 35px;
+  line-height: 80px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+label.logoimg{
+  margin-left: 80px;
+}
+
+label.logoimg img{
+  height: 80px;
+  width: 100px;
+}
+
+nav ul{
+  float: right;
+  margin-right: 20px;
+  display: flex;
+}
+
+nav ul.navlist{
+  color: white;
+}
+
+nav ul li a p{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+  border-radius: .8rem;
+  padding: 0 20px;
+}
+
+nav ul li a{
+  font-size: 17px;
+  text-transform: uppercase;
+  padding: 0 13px;
+  border-radius: 3px;
+}
+
+nav ul li a p:hover{
+  background-color: #345c98;
+}
+
+nav ul li a:hover{
+  color: white;
+}
+
+.checkbtn{
+  font-size: 30px;
+  color: black;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check{
+  display: none;
+}
+
+.banner{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #3475ca;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  transform: rotateY(-4rem);
+}
+
+.banner_background{
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  background-attachment: fixed;
+}
+
+.logoimg{
+  height: 100px;
+  width: 100px;
+}
+
+.banner .content{
+  position: relative;
+  max-width: 750px;
+  text-align: center;
+  color: white;
+  font-weight: 1000;
+}
+
+.banner .content{
+  font-size: 50px;
+}
+
+/* .cards_section{
+  background-image: url("fluid-background.PNG");
+  width: 100%;
+  margin: 0;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+} */
+
+
+@media only screen and (max-width: 950px){
+  label.logo{
+    font-size: 25px;
+  }
+  label.logoimg{
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+  label.logoimg img{
+    height: 65px;
+  }
+  nav ul li a p{
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1350px){
+  .checkbtn{
+    display: block;
+  }
+  nav ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #2c3e50;
+    top: 80px;
+    left: 0;
+    text-align: center;
+    display: block;
+    left: -100%;
+    transition: all .5s;
+  }
+  nav ul li{
+    width: 100%;
+    line-height: 30px;
+  }
+  nav ul li a p{
+    display: block;
+    border-radius: 0%;
+  }
+  nav ul li a{
+    width: 100%;
+    display: contents;
+    font-size: 20px;
+    color: white;
+  }
+
+  .banner .content{
+    margin-left: 10%;
+  }
+
+  #check:checked ~ nav{
+    background: white;
+    position: sticky;
+  }
+
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
+
+
+
+/******************************************************************/
+
+.cards_section{
+  margin: 5rem;
+}
+
+.view{
+height: 550px;
+margin: 10px;
+border: 10px solid #fff;
+overflow: hidden;
+position: relative;
+text-align: center;
+box-shadow: 1px 1px 2px #e6e6e6;
+cursor: default;
+background: #fff no-repeat center center
+}
+.view .mask, .view .content{
+height: 550px;
+position: absolute;
+overflow: hidden;
+top: 0;
+left: 0
+}
+.view img {
+display: block;
+position: relative;
+height: 100%;
+}
+.view h2 {
+text-transform: uppercase;
+color: #fff;
+text-align: center;
+position: relative;
+font-size: 30px;
+padding: 10px;
+background: rgba(0, 0, 0, 0.8);
+margin: 20px 0 0 0
+}
+.view p {
+font-style: italic;
+font-size: 20px;
+position: relative;
+color: #fff;
+padding: 10px 20px 20px;
+text-align: center
+}
+.view a.info {
+display: inline-block;
+text-decoration: none;
+padding: 7px 14px;
+background: #000;
+color: #fff;
+text-transform: uppercase;
+box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+box-shadow: 0 0 5px #000
+}
+
+.view-first img {
+    transition: all 0.2s linear;
+}
+.view-first .mask {
+    opacity: 0;
+    background: linear-gradient(to right, rgba(79, 172,254, .8), rgba(0, 242, 254, .8));
+    transition: all 0.4s ease-in-out;
+}
+.view-first h2 {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.view-first p {
+    transform: translateY(100px);
+    opacity: 0;
+	transition: all 0.2s linear;
+}
+.view-first a.info{
+    opacity: 0;
+	transition: all 0.2s ease-in-out;
+}
+
+.view-first:hover img {
+	transform: scale(1.1);
+}
+.view-first:hover .mask {
+	opacity: 1;
+}
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+    opacity: 1;
+    transform: translateY(0px);
+}
+.view-first:hover p {
+    transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+    transition-delay: 0.2s;
+}
+
+.parallax{
+  height: 600px;
+  background-image: url("parallax_background.PNG");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.75;
+  position: relative;
+  display: flex;
+}
+
+.heading{
+  text-align: center;
+  position: absolute;
+  color: #fff;
+  font-size: 300%;
+  top: 40%;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-shadow: 0 0 10px #000;
+  line-height: 70px;
+  margin: 0 40px;
+}
+
+.explain{
+  margin: 0;
+  padding: 80px;
+  text-align: center;
+}
+
+.explain_blog{
+  margin: 5rem 0;
+  width: 100%;
+  padding: 3rem;
+  background-color: #fff;
+  box-shadow:  0 1.4rem 8rem rgba(0,0,0,.2);
+  display: flex;
+  align-items: center;
+  border-radius: .8rem;
+}
+
+.blog_img_left{
+  min-width: 25rem;
+  max-width: 25rem;
+  height: 20rem;
+  transform: translateX(-6rem);
+  position: relative;
+}
+
+.blog_img_right{
+  min-width: 25rem;
+  max-width: 25rem;
+  height: 20rem;
+  transform: translateX(6rem);
+  position: relative;
+}
+
+.blog_img_left img,
+.blog_img_right img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: .8rem;
+}
+
+.blog_img_left::before,
+.blog_img_right::before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: linear-gradient(to right, rgba(79, 172,254, .8), rgba(0, 242, 254, .8)); */
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  opacity: 0.5;
+  box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0,.05);
+  border-radius: .8rem;
+}
+
+.blog_info{
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: .5rem 0;
+}
+
+@media screen and (max-width: 1068px){
+  .explain_blog{
+    max-width: 80rem;
+  }
+  .blog_img_left{
+    min-width: 20rem;
+    max-width: 20rem;
+  }
+  .blog_img_right{
+    min-width: 20rem;
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 950px){
+  .heading{
+    font-size: 150%;
+    top:20%;
+  }
+  .cards_section{
+    margin: 0;
+    padding-top: 25px;
+  }
+  .view{
+    margin: 40px 25px;
+  }
+  .explain_blog{
+    padding: 2rem;
+    flex-direction: column;
+  }
+  .left_blog{
+    flex-direction: column;
+  }
+  .right_blog{
+    flex-direction: column-reverse;
+  }
+  .blog_img_left{
+    min-width: 100%;
+    max-width: 100%;
+    transform: translate(0, -4rem);
+  }
+  .blog_img_right{
+    min-width: 100%;
+    max-width: 100%;
+    transform: translate(-0.5rem, -4rem);
+  }
+  /* .right_info{
+    transform: translate(0, 18rem);
+  } */
+}
+
+@media only screen and (max-width: 500px){
+  label.logo{
+    font-size: 20px;
+  }
+
+  label.logoimg{
+    margin-left: 20px;
+    text-align: center;
+  }
+
+  label.logoimg img{
+    margin-top: 5px;
+    height: 45px;
+    width: 70px;
+  }
+  .explain{
+    padding: 80px 5px;
+
+  }
+}

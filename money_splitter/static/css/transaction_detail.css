@@ -1,0 +1,61 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+.transaction-detail-page .row{
+  width: 100%;
+}
+
+.transaction-detail-img-grid{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.transaction-detail-img{
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  padding: 30px;
+  margin-top: 75px;
+  padding-left: 0px;
+}
+
+.transaction-detail-grid{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  margin: 20px 0px;
+}
+
+.transaction-detail-grid h2{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.transaction-detail-box h3{
+  text-align: center;
+}
+
+.transaction-detail-box{
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  color: black;
+  margin: 15px 0px;
+  box-shadow: .5rem .5rem 3rem 1px rgba(0,0,0,.05);
+  border-radius: .8rem;
+}
+
+@media only screen and (max-width: 990px){
+  .transaction-detail-img-grid{
+    display: none;
+  }
+}

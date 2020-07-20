@@ -1,0 +1,18 @@
+{% extends 'splitter/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <form action="{% url 'splitter:update_transaction' pk=rooms.pk id=prev_transaction.id %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="reason" value='{{ prev_transaction.reason }}'>
+          <input type="number" name="amount" value='{{ prev_transaction.amount }}'>
+          {% for member in members %}
+          <input type="checkbox" name="splitter" value='{{ member.username }}' {% if member.username in prev_splitters_usernames %} checked="checked" {% endif %}>{{ member.username }}<br>
+          {% endfor %}
+          <input type="submit" class="btn btn-primary" name="" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

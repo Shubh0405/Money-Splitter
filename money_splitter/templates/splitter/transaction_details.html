@@ -1,0 +1,82 @@
+{% extends 'splitter/base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/transaction_detail.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<div class="transaction-detail-page">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="transaction-detail-img-grid">
+        <img src="{% static 'images/undraw_wallet_aym5.svg' %}" alt="" class="transaction-detail-img">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="container transaction-detail-grid">
+        <h2>Transaction details:</h2>
+        <div class="transaction-detail-box">
+          <p><i class="fal fa-money-check-edit-alt"></i> Reason:</p>
+          <h3>{{ transaction.reason }}</h3>
+        </div>
+        <div class="transaction-detail-box">
+          <p><i class="fas fa-money-check-alt"></i> Amount: </p>
+          <h3>{{ transaction.amount }}</h3>
+        </div>
+        <div class="transaction-detail-box">
+          <p><i class="far fa-user-plus"></i> Paid By: </p>
+          <h3>{{ transaction.payer.username }}</h3>
+        </div>
+        <div class="transaction-detail-box">
+          <p><i class="far fa-users"></i> Splitters:</p>
+          {% for splitter in transaction_splitters_username %}
+          <h3>{{ splitter }}</h3>
+          {% endfor %}
+        </div>
+        <div class="transaction-detail-box">
+          <p><i class="fal fa-calendar-alt"></i> Created at:</p>
+          <h3>{{ transaction.created_at }}</h3>
+        </div>
+
+          <a href="{% url 'splitter:update_transaction' pk=transaction.room.pk id=transaction.id %}" class="btn btn-primary" data-target="#ModalUpdateTransaction" data-toggle="modal">Update</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="ModalUpdateTransaction" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {% if request.user.username == transaction.payer.username %}
+          <form action="{% url 'splitter:update_transaction' pk=transaction.room.pk id=transaction.id %}" method="post">
+            {% csrf_token %}
+            <label for="reason"><i class="fal fa-money-check-edit-alt"></i> Reason:</label>
+            <input type="text" name="reason" value='{{ transaction.reason }}'>
+            <hr>
+            <label for="amount"><i class="fas fa-money-check-alt"></i> Amount:</label>
+            <input type="number" name="amount" value='{{ transaction.amount }}'>
+            <hr>
+            <p><i class="far fa-users"></i> Select Splitters:</p>
+            {% for member in all_room_members %}
+            <input type="checkbox" name="splitter" value='{{ member.username }}' {% if member.username in transaction_splitters_username %} checked="checked" {% endif %}>{{ member.username }}<br>
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-primary" name="" value="Submit">
+          </form>
+          {% else %}
+          <h3>Only the member who paid for the transaction can update it.</h3>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
