@@ -476,6 +476,12 @@ box-shadow: 0 0 5px #000
   }
   .explain{
     padding: 80px 5px;
-
+  }
+  .banner .content{
+    font-size: 25px;
+    margin-left: 5%;
+  }
+  .view p{
+    font-size: 15px;
   }
 }
