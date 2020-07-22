@@ -7,6 +7,7 @@ from splitter.forms import UserForm,RoomForm
 from splitter.models import User,room,room_members,transaction,debt,final_transactions,Personal_income,Personal_expense
 from django.template.loader import render_to_string
 from django.db.models import Q
+from django.contrib import messages
 # Create your views here.
 
 def joinus(request):
@@ -19,10 +20,12 @@ def signup(request):
         password = request.POST.get('password')
         email = request.POST.get('email')
         if(User.objects.filter(username=username).exists()):
+            messages.error(request, "Username already exists, try to signin or choose different username")
             return redirect('splitter:joinus')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
             user.save()
+            messages.error(request,'Account successfully created! Try logging now')
             return HttpResponseRedirect(reverse('home'))
 
 
@@ -46,7 +49,8 @@ def user_login(request):
             else:
                 return HttpResponse("Account not active")
         else:
-            return HttpResponse("Invalid details")
+            messages.error(request, "Invalid Details")
+            return redirect("splitter:joinus")
 
 
 """
@@ -147,10 +151,6 @@ def transaction_details(request,pk):
     transaction_splitters_username = [x.username for x in transaction_splitters]
     return render(request,'splitter/transaction_details.html',{'transaction':transactions,'transaction_splitters_username':transaction_splitters_username,'all_room_members':all_room_members,'transaction_splitters':transaction_splitters})
 
-
-
-
-
 # Create transaction View
 # Take all the data of transaction and create transaction object. Payer will be the current user.
 # Take the list of splitters and make debt object for each of them.
@@ -190,6 +190,7 @@ def create_transaction(request,pk):
                             final_objs.save()
             return HttpResponseRedirect(reverse('splitter:room_detail',kwargs={'pk':pk}))
         except:
+            messages.error(request, "Details do not match the specified data type. (Hint: amount should be integer)")
             return HttpResponseRedirect(reverse('splitter:room_detail',kwargs={'pk':pk}))
     # return render(request,'splitter/create_transaction.html',{'members':members,'rooms':rooms})
 
@@ -335,15 +336,6 @@ def delete_debt(request,pk):
 def HomePage(request):
     return render(request,'splitter/index.html',{})
 
-
-# ## Add members in the room.
-# def add_member(request,pk,id):
-#     in_room = get_object_or_404(room,pk=pk)
-#     member = get_object_or_404(User,id=id)
-#     room_member = room_members(room=in_room,member=member)
-#     room_member.save()
-#     return HttpResponseRedirect(reverse('splitter:list_members',kwargs={'pk':pk}))
-
 def personal_budget(request):
     qs_inc = Personal_income.objects.filter(user = request.user)
     qs_exp = Personal_expense.objects.filter(user = request.user)
@@ -379,6 +371,7 @@ def add_personal_budget(request):
             form.save()
             return HttpResponseRedirect(reverse('splitter:personal_budget'))
         except:
+            messages.error(request, "Details do not match the specified data type. (Hint: amount should be integer)")
             return HttpResponseRedirect(reverse('splitter:personal_budget'))
 
 def delete_personal_income(request,pk):
