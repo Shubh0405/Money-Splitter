@@ -17,9 +17,9 @@
         <h1>{{ rooms.name }}</h1>
         <h4>Created by: {{ rooms.creater.username }}</h4>
         <p><b>{{ members_count }} members</b></p>
-        <a class="btn btn-primary" href="" data-target="#ModalCreateTransaction" data-toggle="modal">Add transactions</a>
+        <a href="" data-target="#ModalCreateTransaction" data-toggle="modal"><button type="button" name="button" class="room-buttons">Add transactions</button></a>
         {% if creator %}
-        <a href="{% url 'splitter:list_members' pk=rooms.pk %}" class="btn btn-primary">Add Members</a>
+        <a href="{% url 'splitter:list_members' pk=rooms.pk %}"><button type="button" name="button" class="room-buttons">Add Members</button></a>
         {% endif %}
       </div>
     </div>
@@ -80,6 +80,4 @@
     </div>
   </div>
 </div>
-
-
 {% endblock %}
