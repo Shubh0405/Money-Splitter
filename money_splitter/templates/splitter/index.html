@@ -2,6 +2,19 @@
 {% load static %}
 {% block content %}
 
+
+{% if messages %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+{% endif %}
+
+
    <div class="banner" data-aos="zoom-out" data-aos-delay="100" data-aos-duration="2500">
       <img class="banner_background" src="{% static 'images/002.jpg' %}" alt="">
       <div class="content">
@@ -13,7 +26,7 @@
     <div class="cards_section">
       <div class="row">
         <div class="col-md-12 col-lg-4">
-          <div class="view view-first" data-aos="fade-left" data-aos-delay="100" data-aos-duration="2500">
+          <div class="view view-first" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2500">
             <img src="{% static 'images/card1.PNG' %}" />
             <div class="mask">
               <h2>Personal Budget</h2>
@@ -22,7 +35,7 @@
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
-          <div class="view view-first" data-aos="fade-up" data-aos-delay="200" data-aos-duration="2500">
+          <div class="view view-first" data-aos="fade-up" data-aos-delay="100" data-aos-duration="2500">
             <img src="{% static 'images/card3.PNG' %}" />
             <div class="mask">
               <h2>Groups</h2>
@@ -31,7 +44,7 @@
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
-          <div class="view view-first" data-aos="fade-right" data-aos-delay="300" data-aos-duration="2500">
+          <div class="view view-first" data-aos="fade-right" data-aos-delay="150" data-aos-duration="2500">
             <img src="{% static 'images/card2.PNG' %}" />
             <div class="mask">
               <h2>Debt Settlements</h2>
@@ -50,7 +63,7 @@
 
     <div class="explain">
       <h2>How To Use</h2>
-      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="100" data-aos-duration="2500">
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2500">
         <div class="blog_img_left">
           <img src="{% static 'images/undraw_secure_login_pdn4.svg' %}" alt="">
         </div>
@@ -59,7 +72,7 @@
           <p>Wondering the Charges of the exclusive features we provide!!!!! Its Absolutely FREE just signup like you do on any other website by proving your nickname, an email to contact you on, and a strong password just to keep ur details safe. To make it more friendly we also have login with google feature for you. Enjoy our Services!!!</p>
         </div>
       </div>
-      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="300" data-aos-duration="2500">
+      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="50" data-aos-duration="2500">
         <div class="blog_info right_info">
           <h1>Manage Your Personal Budget</h1>
           <p>Navigate to our Personal Budget tab, Here you can easily add or delete your expenses and incomes and view your net worth in detail with total income and total expense. A great easy way to keep track of all your earnings in one place. Just selete + to add income and - to add expense, add the description as per your convenience and enter the amount thats all.</p>
@@ -68,7 +81,7 @@
           <img src="{% static 'images/undraw_Calculator_0evy.svg' %}" alt="">
         </div>
       </div>
-      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="600" data-aos-duration="2500">
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2500">
         <div class="blog_img_left">
           <img src="{% static 'images/undraw_hang_out_h9ud.svg' %}" alt="">
         </div>
@@ -77,7 +90,7 @@
           <p>Going out to parties/trips with friends go to your rooms tab, create a room and add your friends in it, in case you dont see your friends name in the list just ask him to register on our website. Now each of you can enter a transaction and just to make it realistic user can choose with whom they want to split the amount.</p>
         </div>
       </div>
-      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="900" data-aos-duration="2500">
+      <div class="explain_blog right_blog" data-aos="fade-right" data-aos-delay="50" data-aos-duration="2500">
         <div class="blog_info right_info">
           <h1>Add or Update transaction.</h1>
           <p>Add a transaction by entering amount, description and choose the members with whom you want to split the amount as you are the creator of the transaction you can update it anytime you want. Our website automatically records the date and time of the transaction and displays it in transaction detail page with every other detail in it.</p>
@@ -86,7 +99,7 @@
           <img src="{% static 'images/undraw_online_payments_luau.svg' %}" alt="">
         </div>
       </div>
-      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="1200" data-aos-duration="2500">
+      <div class="explain_blog left_blog" data-aos="fade-left" data-aos-delay="50" data-aos-duration="2500">
         <div class="blog_img_left">
           <img src="{% static 'images/undraw_checking_boxes_2ibd.svg' %}" alt="">
         </div>
