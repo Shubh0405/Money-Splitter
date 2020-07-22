@@ -26,8 +26,10 @@ body,html{
 }
 
 .room-detail-info{
-  text-align: left;
+  text-align: center;
   margin-top: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .room-detail-info h1,h4{
@@ -41,6 +43,28 @@ body,html{
 
 .room-transactions-info .row{
   width: 100%;
+}
+
+.room-detail-info a{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.room-detail-info a button{
+    padding: 10px 20px;
+    border: 1px solid #333;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    border-radius: 0.8rem;
+    transition: 0.3s;
+    background-image: linear-gradient(to top, #b224ef 0%, #7579ff 100%);
+    color: white;
 }
 
 .room-transactions-info .transaction-detail-box{
